@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "watchify -vd -p browserify-hmr -t vueify -e public/src/main.js -o public/src/bundle.js & node ./bin/www"
-    },
+  },
   "dependencies": {
     "browserify-hmr": "^0.3.6",
     "cookie-parser": "~1.4.3",
@@ -20,4 +20,3 @@
     "watchify": "^3.11.0"
   }
 }
-
