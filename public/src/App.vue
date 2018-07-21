@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// import FortuneTeller from './components/FortuneTeller';
 var FortuneTeller = require('./components/fortuneTeller.vue');
 
 module.exports = {
