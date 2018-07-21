@@ -13,6 +13,8 @@
 </template>
 
 <script>
+const axios = require('axios');
+
 module.exports = {
 name: 'Home',
   data() {
@@ -42,7 +44,12 @@ name: 'Home',
       }
     },
     motionDetected() {
-      this.setFortuneValue();
+      axios.get('http://localhost:3000/motion')
+	.then(() => {
+	  this.setFortuneValue();
+	  this.reset();
+	})
+	.catch(error => console.log('error from server', error));
     },
     setFortuneValue() {
       this.fortuneVariable = (Math.random() * 100).toFixed(2);

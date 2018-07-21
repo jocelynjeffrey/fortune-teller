@@ -9,8 +9,8 @@ router.get('/', function(req, res) {
 router.post('/motion', function(req, res) {
   var msg = req.body.msg
   console.log(msg);
-  alert(msg);
-  // res.render('index', { title: 'MOOOOOTION' });
+  alert(msg); // for some reason this keeps the loop open
+  res.send("hey girl");
 });
 
 module.exports = router;
