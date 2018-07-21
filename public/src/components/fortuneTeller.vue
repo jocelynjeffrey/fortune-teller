@@ -42,12 +42,6 @@ name: 'Home',
       }
     },
     motionDetected() {
-      // axios.get('http://localhost:3000/api/v1/temperature')
-      //   .then(() => {
-      //     this.setFortuneValue();
-      //     this.reset();
-      //   })
-      //   .catch(error => console.log('error from server', error)); // eslint-disable-line
       this.setFortuneValue();
     },
     setFortuneValue() {
