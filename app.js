@@ -31,15 +31,15 @@ app.get('/motion', function(req, res) {
   res.send('motionnnnn');
 });
 
-app.post('/motion', (req, res) => {
+app.post('/motion', function(req, res) {
   // console.log('msg from app.js', msg);
   // res.status(200);
   // res.send(msg);
   var msg = req.body.msg;
   console.log('msg is:', msg)
-  res.json({
-    fortune: (Math.random() * 100).toFixed(2) - 0,
-  });
+  // res.json({
+  //   fortune: (Math.random() * 100).toFixed(2) - 0,
+  // });
 });
 
 // catch 404 and forward to error handler
