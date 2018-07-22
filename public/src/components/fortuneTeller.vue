@@ -36,7 +36,7 @@ name: 'Home',
     loadData() {
       axios.get('http://localhost:3000/motion')
         .then(res => {
-          console.log('response status', res.status)
+          console.log('response in vue:', res)
           if(res.status === 200) {
             this.setFortuneValue();
             this.reset();
@@ -91,13 +91,6 @@ name: 'Home',
       console.log('mounted')
       this.loadData();
     }.bind(this), 4000);
-    // setTimeout(
-    //   function() {
-    //     console.log('mounted');
-    //     this.loadData();
-    //   }.bind(this),
-    //   2000,
-    // );
  },
 };
 </script>
