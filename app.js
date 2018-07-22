@@ -22,29 +22,17 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.get('/motion', (req, res) => getPiData(req, res));
+app.get('/motion', () => lastMotion === lastMotion ? false : true);
 
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
 
-  if(msg === 'PI') {
+  if(msg == 'PI') {
     lastMotion = Date.now();
     res.send('motion from pi')
   }
 });
-
-function getPiData() {
-  lastMotion === lastMotion ? false : true;
-}
-
-// app.post('/motion', function(req, res) {
-//   var msg = req.body.msg;
-//   console.log('msg is:', msg)
-//   res.json({
-//     fortune: (Math.random() * 100).toFixed(1),
-//   });
-// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
