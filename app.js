@@ -4,8 +4,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var motionMsg = '';
-var DURATION = 2000;
+var isMotion = false;
 var app = express();
 
 // view engine setup
@@ -29,12 +28,13 @@ app.get('/', function(req, res) {
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  if (msg === 'PI') {
+  if (msg === 'PI' || isMotion) {
+    isMotion = true;
     res.send("PI");
   } else {
-    res.send('')
+    res.send('hello!')
   }
-  console.log('new mm is', motionMsg)
+  console.log('there is motion?', isMotion)
 });
 
 function getPiData() {
