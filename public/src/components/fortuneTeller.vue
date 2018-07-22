@@ -26,7 +26,7 @@ name: 'Home',
   },
   methods: {
     loadData() {
-      axios.post('http://localhost:3000/motion')
+      axios.get('http://localhost:3000/motion')
       .then(res => {
         console.log('response in vue:', res)
         if(res.status === 200) {
@@ -36,7 +36,7 @@ name: 'Home',
           console.log('status was not 200')
         }
       })
-      .catch(error => console.log('error from server', error));
+      .catch(error => console.log('oh no, error from server:', error));
     },
     getFortune() {
       switch (true) {
