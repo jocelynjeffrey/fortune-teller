@@ -6,7 +6,7 @@
       <transition name="fade">
         <h2 class="fortune-text" v-if="showFortune">{{ getFortune() }}</h2>
       </transition>
-      <button v-if="!showFortune" @click="motionDetected">click me</button>
+      <!-- <button v-if="!showFortune" @click="motionDetected">click me</button> -->
     </div>
     <h2>{{ question }}</h2>
   </div>
@@ -24,14 +24,6 @@ name: 'Home',
       showFortune: false,
     };
   },
-  // ready() {
-  //   this.loadData();
-  //   console.log('ready 1')
-  //   setInterval(function () {
-  //     console.log('ready 2')
-  //     this.loadData();
-  //   }.bind(this), 2000);
-  // },
   methods: {
     loadData() {
       axios.get('http://localhost:3000/motion')
@@ -64,14 +56,14 @@ name: 'Home',
           return 'hmmm...maybe?';
       }
     },
-    motionDetected() {
-      axios.get('http://localhost:3000/motion')
-        .then(() => {
-          this.setFortuneValue();
-          this.reset();
-        })
-        .catch(error => console.log('error from server', error));
-    },
+    // motionDetected() {
+    //   axios.get('http://localhost:3000/motion')
+    //     .then(() => {
+    //       this.setFortuneValue();
+    //       this.reset();
+    //     })
+    //     .catch(error => console.log('error from server', error));
+    // },
     setFortuneValue() {
       this.fortuneVariable = (Math.random() * 100).toFixed(2);
       this.showFortune = true;
