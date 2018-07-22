@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.get('/motion', () => lastMotion === lastMotion ? false : true);
+app.get('/motion', () => true);
 
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
