@@ -27,11 +27,11 @@ app.get('/motion', () => getPiData());
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  if (msg === 'undefined') {
-    return
-  } else {
+  if (msg === 'PI') {
     lastMotion = Date.now();
     res.send('motion from pi');
+  } else {
+    console.log('got nothing')
   }
 });
 
