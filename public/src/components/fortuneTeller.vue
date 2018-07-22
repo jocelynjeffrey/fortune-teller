@@ -90,7 +90,7 @@ name: 'Home',
     setInterval(function () {
       console.log('mounted')
       this.loadData();
-    }.bind(this), 4000);
+    }.bind(this), 8000);
  },
 };
 </script>
