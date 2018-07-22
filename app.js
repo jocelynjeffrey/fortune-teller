@@ -27,13 +27,16 @@ app.get('/motion', () => getPiData());
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  lastMotion = Date.now();
-  res.json({
-    fortune: msg,
-  });
+  if(msg == 'PI') {
+    lastMotion = Date.now();
+    res.send(lastMotion);
+  }
 });
 
 function getPiData() {
+  if (lastMotion !== lastMotion) {
+    return true;
+  }
 }
 
 // app.get('/', function(req, res) {
