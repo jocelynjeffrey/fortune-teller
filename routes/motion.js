@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var app = express();
 
 /* GET motion listing. ORIGINAL */
 router.get('/', function(req, res, next) {
