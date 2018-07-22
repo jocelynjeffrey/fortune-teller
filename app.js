@@ -22,12 +22,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/motion', motionRouter);
 
-// app.post('/motion', (req, res) => {
-//   var msg = req.body.msg;
-//   console.log('msg from app.js', msg);
-//   res.status(200);
-//   res.send(msg);
-// });
+app.post('/motion', (req, res) => {
+  var msg = req.body.msg;
+  console.log('msg from app.js', msg);
+  res.status(200);
+  res.send(msg);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
