@@ -28,13 +28,14 @@ app.get('/', function(req, res) {
 
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
-  motionMsg = msg;
   console.log('msg is', msg);
   console.log('new mm is', motionMsg)
-  if (motionMsg === 'PI') {
-    res.send("PI")
+  if (msg === 'PI') {
+    res.send("PI");
+    motionMsg = 'PI';
   } else {
     res.send("undefined")
+    motionMsg = '';
   }
 });
 
