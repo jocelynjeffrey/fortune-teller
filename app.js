@@ -22,13 +22,16 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.get('/motion', () => getPiData());
+app.get('/motion', function(req, res) {
+  res.send('test');
+});
 
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
   if (msg === 'PI' && lastMotion !== Date.now()) {
     lastMotion = Date.now();
+    console.log('new lastMotion', lastMotion)
     res.send('motion from pi');
   } else {
     console.log('got nothing')
@@ -36,7 +39,6 @@ app.post('/motion', function(req, res) {
 });
 
 function getPiData() {
-
 }
 
 // app.get('/', function(req, res) {
