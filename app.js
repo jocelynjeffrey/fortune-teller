@@ -4,9 +4,6 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-// var indexRouter = require('./routes/index');
-// var motionRouter = require('./routes/motion');
-
 var app = express();
 
 // view engine setup
@@ -19,28 +16,30 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
-// app.use('/', indexRouter);
-// app.use('/motion', motionRouter);
-
 app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.get('/motion', function(req, res) {
-  console.log('REQUEST IS', req.body)
-  res.send('motionnnnn');
-});
+// app.get('/motion', function(req, res) {
+//   console.log('REQUEST IS', req.body)
+//   res.send('motionnnnn');
+// });
 
 app.post('/motion', function(req, res) {
-  // console.log('msg from app.js', msg);
-  // res.status(200);
-  // res.send(msg);
   var msg = req.body.msg;
   console.log('msg is:', msg)
   res.json({
     fortune: (Math.random() * 100).toFixed(2) - 0,
   });
 });
+
+function getPiData(req, res) {
+  res.json({
+    data: (Math.random() * 100).toFixed(2) - 0,
+  });
+}
+
+app.get('/motion', (req, res, next) => getPiData(req, res, next));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
