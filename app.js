@@ -4,6 +4,8 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
+var lastMotion = 0; // UTC millisecond timestamp
+var DURATION = 2000;
 var app = express();
 
 // view engine setup
@@ -20,16 +22,20 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.get('/motion', () => getPiData());
+app.get('/motion', (req, res) => getPiData(req, res));
+
+app.post('/motion', function(req, res) {
+  var msg = req.body.msg;
+  console.log('msg is', msg);
+  msg === 'PI' ? lastMotion = Date.now() : lastMotion = lastMotion;
+  // lastMotion = Date.now();
+  // res.json({
+  //   fortune: msg,
+  // });
+});
 
 function getPiData() {
-  app.post('/motion', function(req, res) {
-    var msg = req.body.msg;
-    console.log('msg is', msg);
-    res.json({
-      fortune: msg,
-    });
-  });
+  lastMotion === lastMotion ? false : true;
 }
 
 // app.post('/motion', function(req, res) {
