@@ -85,16 +85,11 @@ name: 'Home',
   mounted() {
     setTimeout(
       function() {
-      console.log('mounted');
-      axios.get('http://localhost:3000/motion')
-        .then(() => {
-          this.setFortuneValue();
-          this.reset();
-        })
-        .catch(error => console.log('error from server', error));
+        console.log('mounted');
+        this.loadData();
       }.bind(this),
       2000,
-   );
+    );
  },
 };
 </script>
