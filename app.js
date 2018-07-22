@@ -29,10 +29,10 @@ app.get('/', function(req, res) {
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  if (msg == 'PI') {
-    res.send("PI")
-  } else {
+  if (msg == 'undefined') {
     res.send("undefined girl")
+  } else {
+    res.send("PI")
   }
   // res.send(req.body.msg)
   // if (msg === 'PI' && lastMotion !== Date.now()) {
