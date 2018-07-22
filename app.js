@@ -4,7 +4,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var lastMotion = 0; // UTC millisecond timestamp
+var motionMsg = '';
 var DURATION = 2000;
 var app = express();
 
@@ -28,10 +28,11 @@ app.get('/', function(req, res) {
 
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
+  motionMsg = msg;
   console.log('msg is', msg);
-  if (msg === undefined) {
+  if (motionMsg === undefined) {
     res.send("undefined girl")
-  } else {
+  } else if (motionMsg === 'PI'){
     res.send("PI")
   }
   // res.send(req.body.msg)
