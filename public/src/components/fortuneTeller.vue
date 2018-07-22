@@ -36,9 +36,13 @@ name: 'Home',
     loadData() {
       axios.get('http://localhost:3000/motion')
         .then(res => {
-          console.log('response from vue', res)
-          this.setFortuneValue();
-          this.reset();
+          console.log('response statue', res.status)
+          if(res.status === 200) {
+            this.setFortuneValue();
+            this.reset();
+          } else {
+            console.log('status was not 200')
+          }
         })
       .catch(error => console.log('error from server', error));
     },
