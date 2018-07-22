@@ -1,11 +1,11 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
-var motionRouter = require('./routes/motion');
+// var indexRouter = require('./routes/index');
+// var motionRouter = require('./routes/motion');
 
 var app = express();
 
@@ -16,17 +16,30 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
-app.use('/', indexRouter);
-app.use('/motion', motionRouter);
+// app.use('/', indexRouter);
+// app.use('/motion', motionRouter);
+
+app.get('/', function(req, res) {
+  res.render('index', { title: 'Fortune Teller' });
+});
+
+app.get('/motion', function(req, res) {
+  console.log('REQUEST IS', req.body)
+  res.send('motionnnnn');
+});
 
 app.post('/motion', (req, res) => {
-  var msg = req.body.msg;
-  console.log('msg from app.js', msg);
-  res.status(200);
-  res.send(msg);
+  // var msg = req.body.msg;
+  // console.log('msg from app.js', msg);
+  // res.status(200);
+  // res.send(msg);
+
+  res.json({
+    fortune: (Math.random() * 100).toFixed(2) - 0,
+  });
 });
 
 // catch 404 and forward to error handler
