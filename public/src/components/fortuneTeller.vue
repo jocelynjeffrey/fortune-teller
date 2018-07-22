@@ -26,14 +26,23 @@ name: 'Home',
   },
   created() {
     console.log('created');
-    axios.get('http://localhost:3000/motion')
-     .then(() => {
-       this.setFortuneValue();
-       this.reset();
-     })
-   .catch(error => console.log('error from server', error));
+
+  },
+  ready() {
+    this.loadData();
+    setInterval(function () {
+      this.loadData();
+    }.bind(this), 2000);
   },
   methods: {
+    loadData() {
+      axios.get('http://localhost:3000/motion')
+        .then(() => {
+          this.setFortuneValue();
+          this.reset();
+        })
+      .catch(error => console.log('error from server', error));
+    },
     getFortune() {
       switch (true) {
         case this.fortuneVariable <= 15:
@@ -54,11 +63,11 @@ name: 'Home',
     },
     motionDetected() {
       axios.get('http://localhost:3000/motion')
-	.then(() => {
-	  this.setFortuneValue();
-	  this.reset();
-	})
-	.catch(error => console.log('error from server', error));
+        .then(() => {
+          this.setFortuneValue();
+          this.reset();
+        })
+        .catch(error => console.log('error from server', error));
     },
     setFortuneValue() {
       this.fortuneVariable = (Math.random() * 100).toFixed(2);
@@ -87,7 +96,7 @@ name: 'Home',
      }.bind(this),
      2000,
    );
- },	
+ },
 };
 </script>
 
