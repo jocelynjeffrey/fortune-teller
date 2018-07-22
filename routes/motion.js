@@ -2,8 +2,14 @@ var express = require('express');
 var router = express.Router();
 
 /* GET motion listing. ORIGINAL */
-router.get('/', function(req, res, next) {
-  res.send('motion');
+// router.get('/', function(req, res, next) {
+//   res.send('motion');
+// });
+
+router.post('/motion', (req, res) => {
+  var msg = req.body.msg;
+  console.log(msg);
+  res.send(msg);
 });
 
 // version 2
