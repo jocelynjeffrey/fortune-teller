@@ -24,13 +24,11 @@ name: 'Home',
       showFortune: false,
     };
   },
-  created() {
-    console.log('created');
-
-  },
   ready() {
     this.loadData();
+    console.log('ready 1')
     setInterval(function () {
+      console.log('ready 2')
       this.loadData();
     }.bind(this), 2000);
   },
@@ -85,17 +83,17 @@ name: 'Home',
     },
   },
   mounted() {
-   console.log('mounted');
-   setTimeout(
-    function() {
-     axios.get('http://localhost:3000/motion')
-       .then(() => {
-         this.setFortuneValue();
-         this.reset();
-       })
-      .catch(error => console.log('error from server', error));
-     }.bind(this),
-     2000,
+    setTimeout(
+      function() {
+      console.log('mounted');
+      axios.get('http://localhost:3000/motion')
+        .then(() => {
+          this.setFortuneValue();
+          this.reset();
+        })
+        .catch(error => console.log('error from server', error));
+      }.bind(this),
+      2000,
    );
  },
 };
