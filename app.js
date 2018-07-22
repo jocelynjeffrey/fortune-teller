@@ -29,9 +29,10 @@ app.post('/motion', function(req, res) {
   console.log('msg is', msg);
   if (msg === 'undefined') {
     return
+  } else {
+    lastMotion = Date.now();
+    res.send('motion from pi');
   }
-  lastMotion = Date.now();
-  res.send('motion from pi');
 });
 
 function getPiData() {
