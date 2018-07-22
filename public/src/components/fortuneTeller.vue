@@ -24,14 +24,14 @@ name: 'Home',
       showFortune: false,
     };
   },
-  ready() {
-    this.loadData();
-    console.log('ready 1')
-    setInterval(function () {
-      console.log('ready 2')
-      this.loadData();
-    }.bind(this), 2000);
-  },
+  // ready() {
+  //   this.loadData();
+  //   console.log('ready 1')
+  //   setInterval(function () {
+  //     console.log('ready 2')
+  //     this.loadData();
+  //   }.bind(this), 2000);
+  // },
   methods: {
     loadData() {
       axios.get('http://localhost:3000/motion')
@@ -88,7 +88,6 @@ name: 'Home',
   },
   mounted() {
     setInterval(function () {
-      console.log('mounted')
       this.loadData();
     }.bind(this), 8000);
  },

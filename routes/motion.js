@@ -6,11 +6,4 @@ router.get('/', function(req, res, next) {
   res.send('motion from router');
 });
 
-// version 2
-// router.post('/motion', function(req, res) {
-//   var msg = req.body.msg
-//   console.log(msg);
-//   res.send('motion 2');
-// });
-
 module.exports = router;
