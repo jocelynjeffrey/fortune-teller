@@ -29,7 +29,6 @@ app.get('/', function(req, res) {
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  console.log('new mm is', motionMsg)
   if (msg === 'PI') {
     res.send("PI");
     motionMsg = 'PI';
@@ -37,6 +36,7 @@ app.post('/motion', function(req, res) {
     res.send("undefined")
     motionMsg = '';
   }
+  console.log('new mm is', motionMsg)
 });
 
 function getPiData() {
