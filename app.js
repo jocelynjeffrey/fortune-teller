@@ -32,11 +32,11 @@ app.get('/motion', function(req, res) {
 });
 
 app.post('/motion', (req, res) => {
-  // var msg = req.body.msg;
   // console.log('msg from app.js', msg);
   // res.status(200);
   // res.send(msg);
-
+  var msg = req.body.msg;
+  console.log('msg is:', msg)
   res.json({
     fortune: (Math.random() * 100).toFixed(2) - 0,
   });
