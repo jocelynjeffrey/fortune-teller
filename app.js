@@ -22,9 +22,9 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.get('/motion', function(req, res) {
-  res.send('test');
-});
+// app.get('/motion', function(req, res) {
+//   res.send('test');
+// });
 
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
