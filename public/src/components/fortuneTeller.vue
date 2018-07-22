@@ -37,7 +37,8 @@ name: 'Home',
   methods: {
     loadData() {
       axios.get('http://localhost:3000/motion')
-        .then(() => {
+        .then(res => {
+          console.log('response from vue', res)
           this.setFortuneValue();
           this.reset();
         })

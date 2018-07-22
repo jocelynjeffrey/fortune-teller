@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-// app.use('/motion', motionRouter);
+app.use('/motion', motionRouter);
 
 app.post('/motion', (req, res) => {
   var msg = req.body.msg;
