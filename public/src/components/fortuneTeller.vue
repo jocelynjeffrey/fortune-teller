@@ -83,13 +83,17 @@ name: 'Home',
     },
   },
   mounted() {
-    setTimeout(
-      function() {
-        console.log('mounted');
-        this.loadData();
-      }.bind(this),
-      2000,
-    );
+    setInterval(function () {
+      console.log('mounted')
+      this.loadData();
+    }.bind(this), 2000);
+    // setTimeout(
+    //   function() {
+    //     console.log('mounted');
+    //     this.loadData();
+    //   }.bind(this),
+    //   2000,
+    // );
  },
 };
 </script>
