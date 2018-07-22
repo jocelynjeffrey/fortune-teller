@@ -27,11 +27,11 @@ app.get('/motion', (req, res) => getPiData(req, res));
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  msg === 'PI' ? lastMotion = Date.now() : lastMotion = lastMotion;
-  // lastMotion = Date.now();
-  // res.json({
-  //   fortune: msg,
-  // });
+
+  if(msg === 'PI') {
+    lastMotion = Date.now();
+    res.send('motion from pi')
+  }
 });
 
 function getPiData() {
