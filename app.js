@@ -36,7 +36,7 @@ app.post('/motion', function(req, res) {
     isMotion = false;
   }
 
-  isMotion ? res.send('MOTION') : res.send('');
+  // isMotion ? res.send('MOTION') : res.send('');
   console.log('there is motion?', isMotion)
 });
 
