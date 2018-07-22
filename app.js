@@ -29,7 +29,7 @@ app.get('/', function(req, res) {
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  if (msg == 'undefined') {
+  if (msg === undefined) {
     res.send("undefined girl")
   } else {
     res.send("PI")
