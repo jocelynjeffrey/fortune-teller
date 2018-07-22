@@ -29,9 +29,8 @@ app.get('/', function(req, res) {
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  if (msg === 'PI') {
+  if (motionMsg === 'PI') {
     res.send("PI");
-    motionMsg = 'PI';
   }
 
   console.log('new mm is', motionMsg)
