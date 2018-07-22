@@ -29,7 +29,7 @@ app.post('/motion', function(req, res) {
   console.log('msg is', msg);
   if(msg == 'PI') {
     lastMotion = Date.now();
-    res.send(lastMotion);
+    res.sendStatus(lastMotion);
   }
 });
 
