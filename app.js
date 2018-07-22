@@ -24,8 +24,8 @@ app.use('/motion', motionRouter);
 
 app.post('/motion', (req, res) => {
   var msg = req.body.msg;
-  console.log('res from app.js', res.sendStatus(status));
-  res.send(res.sendStatus(status));
+  // console.log('res from app.js', res.sendStatus(200));
+  res.send(res.json({ motion: true }));
 });
 
 // catch 404 and forward to error handler
