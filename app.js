@@ -20,15 +20,12 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.get('/motion', (req, res, next) => getPiData(req, res, next));
+app.get('/motion', () => getPiData());
 
-function getPiData(req, res) {
-  // res.json({
-  //   data: (Math.random() * 100).toFixed(1),
-  // });
-
+function getPiData() {
   app.post('/motion', function(req, res) {
     var msg = req.body.msg;
+    console.log('msg is', msg);
     res.json({
       fortune: msg,
     });
