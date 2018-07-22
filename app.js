@@ -22,17 +22,43 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.get('/motion', () => true);
+app.get('/motion', () => getPiData());
 
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-
-  if(msg == 'PI') {
-    lastMotion = Date.now();
-    res.send('motion from pi')
-  }
+  lastMotion = Date.now();
+  res.json({
+    fortune: msg,
+  });
 });
+
+function getPiData() {
+}
+
+// app.get('/', function(req, res) {
+//   res.render('index', { title: 'Fortune Teller' });
+// });
+
+// app.get('/motion', () => true);
+
+// app.post('/motion', function(req, res) {
+//   var msg = req.body.msg;
+//   console.log('msg is', msg);
+
+//   if(msg == 'PI') {
+//     lastMotion = Date.now();
+//     res.send('motion from pi')
+//   }
+// });
+
+// app.post('/motion', function(req, res) {
+//   var msg = req.body.msg;
+//   console.log('msg is:', msg)
+//   res.json({
+//     fortune: (Math.random() * 100).toFixed(1),
+//   });
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
