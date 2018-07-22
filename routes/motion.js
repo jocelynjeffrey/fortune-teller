@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET motion listing. ORIGINAL */
 router.get('/', function(req, res, next) {
-  res.send('motion');
+  res.send('motion from router');
 });
 
 // version 2
