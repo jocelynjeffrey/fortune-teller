@@ -33,7 +33,7 @@ name: 'Home',
           this.setFortuneValue();
           this.reset();
         } else {
-          console.log('status was not 200')
+          console.log(res.data)
         }
       })
       .catch(error => console.log('oh no, error from server:', error));

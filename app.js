@@ -30,18 +30,13 @@ app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   motionMsg = msg;
   console.log('msg is', msg);
-  if (motionMsg === undefined) {
-    res.send("undefined girl")
-  } else if (motionMsg === 'PI'){
+  console.log('new mm is', motionMsg)
+  if (motionMsg === 'PI') {
     res.send("PI")
   }
-  // res.send(req.body.msg)
-  // if (msg === 'PI' && lastMotion !== Date.now()) {
-  //   lastMotion = Date.now();
-  //   console.log('new lastMotion', lastMotion)
-  //   res.send('motion from pi');
-  // } else {
-  //   console.log('got nothing')
+
+  // else if (motionMsg === 'PI'){
+  //   res.send("undefined")
   // }
 });
 
