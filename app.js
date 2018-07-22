@@ -22,16 +22,16 @@ app.use(bodyParser.json());
 // app.use('/', indexRouter);
 // app.use('/motion', motionRouter);
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.get('/motion', function(req, res) {
+app.get('/motion', (req, res) => {
   console.log('REQUEST IS', req.body)
   res.send('motionnnnn');
 });
 
-app.post('/motion', function(req, res) {
+app.post('/motion', (req, res) => {
   // console.log('msg from app.js', msg);
   // res.status(200);
   // res.send(msg);
