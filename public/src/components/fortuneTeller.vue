@@ -67,7 +67,6 @@ name: 'Home',
     setFortuneValue() {
       this.fortuneVariable = (Math.random() * 100).toFixed(2);
       this.showFortune = true;
-      this.reset(); // remove when api is called
     },
     reset() {
       setTimeout(
