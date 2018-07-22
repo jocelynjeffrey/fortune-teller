@@ -29,7 +29,7 @@ name: 'Home',
       axios.post('http://localhost:3000/motion')
       .then(res => {
         console.log('response in vue:', res)
-        if(res.data === 'PI') {
+        if(res.data === 'MOTION') {
           this.setFortuneValue();
           this.reset();
         } else {
@@ -56,14 +56,6 @@ name: 'Home',
           return 'hmmm...maybe?';
       }
     },
-    // motionDetected() {
-    //   axios.get('http://localhost:3000/motion')
-    //     .then(() => {
-    //       this.setFortuneValue();
-    //       this.reset();
-    //     })
-    //     .catch(error => console.log('error from server', error));
-    // },
     setFortuneValue() {
       this.fortuneVariable = (Math.random() * 100).toFixed(2);
       this.showFortune = true;
@@ -80,7 +72,7 @@ name: 'Home',
   mounted() {
     setInterval(function () {
       this.loadData();
-    }.bind(this), 8000);
+    }.bind(this), 2000);
  },
 };
 </script>
