@@ -26,7 +26,7 @@ name: 'Home',
   },
   methods: {
     loadData() {
-      axios.get('http://localhost:3000/motion')
+      axios.post('http://localhost:3000/motion')
       .then(res => {
         console.log('response in vue:', res)
         if(res.data === 'MOTION') {
