@@ -29,13 +29,14 @@ app.get('/', function(req, res) {
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  if (msg === 'PI' && lastMotion !== Date.now()) {
-    lastMotion = Date.now();
-    console.log('new lastMotion', lastMotion)
-    res.send('motion from pi');
-  } else {
-    console.log('got nothing')
-  }
+  res.send(msg)
+  // if (msg === 'PI' && lastMotion !== Date.now()) {
+  //   lastMotion = Date.now();
+  //   console.log('new lastMotion', lastMotion)
+  //   res.send('motion from pi');
+  // } else {
+  //   console.log('got nothing')
+  // }
 });
 
 function getPiData() {

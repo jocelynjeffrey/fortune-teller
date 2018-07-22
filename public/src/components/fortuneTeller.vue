@@ -29,7 +29,7 @@ name: 'Home',
       axios.post('http://localhost:3000/motion')
       .then(res => {
         console.log('response in vue:', res)
-        if(res.status === 200) {
+        if(res.data === 'PI') {
           this.setFortuneValue();
           this.reset();
         } else {
