@@ -33,11 +33,9 @@ app.post('/motion', function(req, res) {
   console.log('new mm is', motionMsg)
   if (motionMsg === 'PI') {
     res.send("PI")
+  } else {
+    res.send("undefined")
   }
-
-  // else if (motionMsg === 'PI'){
-  //   res.send("undefined")
-  // }
 });
 
 function getPiData() {
