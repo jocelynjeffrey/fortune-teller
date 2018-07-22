@@ -32,10 +32,8 @@ app.post('/motion', function(req, res) {
   if (msg === 'PI') {
     res.send("PI");
     motionMsg = 'PI';
-  } else {
-    res.send("undefined")
-    motionMsg = '';
   }
+
   console.log('new mm is', motionMsg)
 });
 
