@@ -36,7 +36,7 @@ name: 'Home',
     loadData() {
       axios.get('http://localhost:3000/motion')
         .then(res => {
-          console.log('response statue', res.status)
+          console.log('response status', res.status)
           if(res.status === 200) {
             this.setFortuneValue();
             this.reset();
@@ -90,7 +90,7 @@ name: 'Home',
     setInterval(function () {
       console.log('mounted')
       this.loadData();
-    }.bind(this), 2000);
+    }.bind(this), 4000);
     // setTimeout(
     //   function() {
     //     console.log('mounted');

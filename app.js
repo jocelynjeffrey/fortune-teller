@@ -24,7 +24,8 @@ app.use('/motion', motionRouter);
 
 app.post('/motion', (req, res) => {
   var msg = req.body.msg;
-  console.log(msg);
+  console.log('msg from app.js', msg);
+  console.log('res from app.js', res);
   res.send(msg);
 });
 
