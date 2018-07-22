@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  if (msg === 'MOTION') {
+  if (msg === 'PI') {
     isMotion = true;
     // res.send("PI");
   } else {
@@ -36,7 +36,7 @@ app.post('/motion', function(req, res) {
     isMotion = false;
   }
 
-  isMotion ? res.send('PI') : res.send('');
+  isMotion ? res.send('MOTION') : res.send('');
   console.log('there is motion?', isMotion)
 });
 
