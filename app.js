@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
 });
 
 function checkForMotion() {
-  var ELAPSED_SECS = (currTime - lastMotion) / 1000;
+  var ELAPSED_SECS = (currTime - lastMotion);
 
   console.log('seconds are:', ELAPSED_SECS);
   console.log('timeout is:', TIMEOUT);
