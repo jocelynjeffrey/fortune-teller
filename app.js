@@ -6,9 +6,9 @@ var bodyParser = require('body-parser');
 
 // var isMotion = false;
 var TIMEOUT = 5000;
-var lastMotion;
+var lastMotion = 0;
 var currTime;
-var ELLAPSED_SECS = (currTime - lastMotion) / 1000;
+// var ELLAPSED_SECS = (currTime - lastMotion) / 1000;
 
 var app = express();
 
@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
 });
 
 function checkForMotion() {
-  ELLAPSED_SECS < TIMEOUT
+  (currTime - lastMotion) / 1000 < TIMEOUT
   ? 'MOTION'
   : ''
 }
@@ -39,12 +39,16 @@ app.post('/motion', function(req, res) {
   if (msg === 'PI') {
     // isMotion = true;
     lastMotion = Date.now();
+    currTime = Date.now();
     res.send('MOTION');
   } else {
     currTime = Date.now();
     res.send(checkForMotion());
   }
-console.log('ellapsed seconds are:', ELLAPSED_SECS)
+// console.log('ellapsed seconds are:', ELLAPSED_SECS)
+// console.log('currTime:', currTime)
+// console.log('lastMotion:', lastMotion)
+// console.log('math', (currTime - lastMotion) / 1000)
 });
 
 // catch 404 and forward to error handler
