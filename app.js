@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 var TIMEOUT = 5000;
 var lastMotion = 0;
 var currTime;
-// var ELLAPSED_SECS = (currTime - lastMotion) / 1000;
 
 var app = express();
 
@@ -27,9 +26,9 @@ app.get('/', function(req, res) {
 });
 
 function checkForMotion() {
-  (currTime - lastMotion) / 1000 < TIMEOUT
+  return (currTime - lastMotion) / 1000 < TIMEOUT
   ? 'MOTION'
-  : ''
+  : 'no go'
 }
 
 app.post('/motion', function(req, res) {
@@ -40,10 +39,13 @@ app.post('/motion', function(req, res) {
     // isMotion = true;
     lastMotion = Date.now();
     currTime = Date.now();
+    console.log('last motion from if', lastMotion)
     res.send('MOTION');
   } else {
     currTime = Date.now();
     res.send(checkForMotion());
+    console.log('last motion from else', lastMotion)
+    console.log('func result', checkForMotion())
   }
 // console.log('ellapsed seconds are:', ELLAPSED_SECS)
 // console.log('currTime:', currTime)
