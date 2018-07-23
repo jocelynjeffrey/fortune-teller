@@ -6,7 +6,6 @@
       <transition name="fade">
         <h2 class="fortune-text" v-if="showFortune">{{ getFortune() }}</h2>
       </transition>
-      <!-- <button v-if="!showFortune" @click="motionDetected">click me</button> -->
     </div>
     <h2>{{ question }}</h2>
   </div>
@@ -28,7 +27,6 @@ name: 'Home',
     loadData() {
       axios.post('http://localhost:3000/motion')
       .then(res => {
-        console.log('response in vue:', res)
         if(res.data === 'MOTION') {
           this.setFortuneValue();
           this.reset();

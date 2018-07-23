@@ -31,7 +31,7 @@ function checkForMotion() {
     lastMotion = Date.now();
     return 'MOTION';
   } else {
-    return 'crickets';
+    return 'detecting...';
   }
 }
 
