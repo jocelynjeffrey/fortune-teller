@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
 });
 
 function checkForMotion() {
-  var ELAPSED_SECS = (lastMotion - currTime) / 1000;
+  var ELAPSED_SECS = (currTime - lastMotion) / 1000;
 
   // console.log('current time:', currTime)
   // console.log('last motion:', lastMotion)
