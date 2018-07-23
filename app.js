@@ -26,11 +26,13 @@ app.get('/', function(req, res) {
 });
 
 function checkForMotion() {
-  if ((currTime - lastMotion) / 1000 < TIMEOUT) {
+  // console.log('current time:', currTime)
+  // console.log('last motion:', lastMotion)
+  if ((currTime - lastMotion) / 1000 > TIMEOUT) {
     lastMotion = Date.now();
     return 'MOTION'
   } else {
-    return 'no go'
+    return 'crickets'
   }
 }
 
@@ -45,10 +47,10 @@ app.post('/motion', function(req, res) {
   } else {
     currTime = Date.now();
     res.send(checkForMotion());
-    console.log('func result', checkForMotion())
+    // console.log('func result', checkForMotion())
   }
 
-console.log('math', ((currTime - lastMotion) / 1000 < TIMEOUT))
+// console.log('math', ((currTime - lastMotion) / 1000 < TIMEOUT))
 });
 
 // catch 404 and forward to error handler
