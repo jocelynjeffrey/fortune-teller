@@ -5,7 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 // var isMotion = false;
-var TIMEOUT = 1500;
+var TIMEOUT = 5000;
 var lastMotion;
 var currTime;
 var ELLAPSED_SECS = (currTime - lastMotion) / 1000;
@@ -44,11 +44,8 @@ app.post('/motion', function(req, res) {
     currTime = Date.now();
     res.send(checkForMotion());
   }
-
+console.log('ellapsed seconds are:', ELLAPSED_SECS)
 });
-
-function getPiData() {
-}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
