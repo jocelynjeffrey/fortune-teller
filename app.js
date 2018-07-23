@@ -5,7 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 // var isMotion = false;
-var TIMEOUT = 3000;
+var TIMEOUT = 2000;
 var lastMotion = 0;
 var currTime = 0;
 

@@ -65,7 +65,7 @@ name: 'Home',
         function() { // eslint-disable-line
           this.showFortune = false;
         }.bind(this),
-        1400,
+        1800,
       );
     },
   },
