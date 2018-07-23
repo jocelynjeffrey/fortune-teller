@@ -5,6 +5,11 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var isMotion = false;
+var TIMEOUT = 1500;
+var lastMotion;
+var currTime;
+var ELLAPSED_SECS = (currTime - lastMotion) / 1000;
+
 var app = express();
 
 // view engine setup
@@ -21,51 +26,30 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-// app.get('/motion', function(req, res) {
-//   res.send('test');
-// });
+function checkForMotion() {
+  ELLAPSED_SECS < TIMEOUT
+  ? isMotion = true
+  : isMotion = false
+}
 
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   console.log('msg is', msg);
-  if (msg === 'PI' || isMotion) {
+
+  if (msg === 'PI') {
     isMotion = true;
+    lastMotion = Date.now();
     res.send("MOTION");
   } else {
-    res.send('')
-    isMotion = false;
+    currTime = Date.now();
+    checkForMotion();
   }
 
-  // isMotion ? res.send('MOTION') : res.send('');
-  console.log('there is motion?', isMotion)
+  isMotion ? res.send('MOTION') : res.send('');
 });
 
 function getPiData() {
 }
-
-// app.get('/', function(req, res) {
-//   res.render('index', { title: 'Fortune Teller' });
-// });
-
-// app.get('/motion', () => true);
-
-// app.post('/motion', function(req, res) {
-//   var msg = req.body.msg;
-//   console.log('msg is', msg);
-
-//   if(msg == 'PI') {
-//     lastMotion = Date.now();
-//     res.send('motion from pi')
-//   }
-// });
-
-// app.post('/motion', function(req, res) {
-//   var msg = req.body.msg;
-//   console.log('msg is:', msg)
-//   res.json({
-//     fortune: (Math.random() * 100).toFixed(1),
-//   });
-// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
