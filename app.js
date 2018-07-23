@@ -5,7 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 // var isMotion = false;
-var TIMEOUT = 3000;
+var TIMEOUT = 2000;
 var lastMotion = 0;
 var currTime = 0;
 
@@ -27,10 +27,6 @@ app.get('/', function(req, res) {
 
 function checkForMotion() {
   var ELAPSED_SECS = (currTime - lastMotion);
-
-  console.log('seconds are:', ELAPSED_SECS);
-  console.log('timeout is:', TIMEOUT);
-  console.log(ELAPSED_SECS < TIMEOUT);
   if (ELAPSED_SECS < TIMEOUT) {
     lastMotion = Date.now();
     return 'MOTION';
@@ -41,8 +37,6 @@ function checkForMotion() {
 
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
-  console.log('msg is', msg);
-
   if (msg === 'PI') {
     lastMotion = Date.now();
     currTime = Date.now();
@@ -51,7 +45,6 @@ app.post('/motion', function(req, res) {
     currTime = Date.now();
     res.send(checkForMotion());
   }
-
 });
 
 // catch 404 and forward to error handler
