@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var TIMEOUT = 1000;
 var lastMotion = 0;
 var currTime = 0;
+var ELLAPSED_SECS = (lastMotion - currTime) / 1000;
 
 var app = express();
 
@@ -26,13 +27,13 @@ app.get('/', function(req, res) {
 });
 
 function checkForMotion() {
-  // console.log('current time:', currTime)
-  // console.log('last motion:', lastMotion)
-  if ((currTime - lastMotion) / 1000 > TIMEOUT) {
+  console.log('current time:', currTime)
+  console.log('last motion:', lastMotion)
+  if ( ELLAPSED_SECS < TIMEOUT) {
+    return 'crickets'
+  } else {
     lastMotion = Date.now();
     return 'MOTION'
-  } else {
-    return 'crickets'
   }
 }
 
