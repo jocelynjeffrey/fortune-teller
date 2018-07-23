@@ -5,7 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 // var isMotion = false;
-var TIMEOUT = 1000;
+var TIMEOUT = 500;
 var lastMotion = 0;
 var currTime = 0;
 
@@ -33,7 +33,6 @@ function checkForMotion() {
   console.log('seconds are:', ELAPSED_SECS);
   if (ELAPSED_SECS < TIMEOUT) {
     lastMotion = Date.now();
-    currTime = Date.now();
     return 'MOTION';
   } else {
     return 'crickets';
