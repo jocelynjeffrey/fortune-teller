@@ -32,10 +32,10 @@ function checkForMotion() {
   // console.log('last motion:', lastMotion)
   console.log('seconds are:', ELAPSED_SECS);
   if (ELAPSED_SECS < TIMEOUT) {
-    return 'crickets'
-  } else {
     lastMotion = Date.now();
-    return 'MOTION'
+    return 'MOTION';
+  } else {
+    return 'crickets';
   }
 }
 
