@@ -4,7 +4,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var isMotion = false;
+// var isMotion = false;
 var TIMEOUT = 1500;
 var lastMotion;
 var currTime;
@@ -28,8 +28,8 @@ app.get('/', function(req, res) {
 
 function checkForMotion() {
   ELLAPSED_SECS < TIMEOUT
-  ? isMotion = true
-  : isMotion = false
+  ? 'MOTION'
+  : ''
 }
 
 app.post('/motion', function(req, res) {
@@ -37,15 +37,14 @@ app.post('/motion', function(req, res) {
   console.log('msg is', msg);
 
   if (msg === 'PI') {
-    isMotion = true;
+    // isMotion = true;
     lastMotion = Date.now();
-    res.send("MOTION");
+    res.send('MOTION');
   } else {
     currTime = Date.now();
-    checkForMotion();
+    res.send(checkForMotion());
   }
 
-  isMotion ? res.send('MOTION') : res.send('');
 });
 
 function getPiData() {
