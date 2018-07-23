@@ -5,7 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 // var isMotion = false;
-var TIMEOUT = 5000;
+var TIMEOUT = 1000;
 var lastMotion = 0;
 var currTime;
 
@@ -47,10 +47,8 @@ app.post('/motion', function(req, res) {
     console.log('last motion from else', lastMotion)
     console.log('func result', checkForMotion())
   }
-// console.log('ellapsed seconds are:', ELLAPSED_SECS)
-// console.log('currTime:', currTime)
-// console.log('lastMotion:', lastMotion)
-// console.log('math', (currTime - lastMotion) / 1000)
+
+console.log('math', (currTime - lastMotion) / 1000)
 });
 
 // catch 404 and forward to error handler
