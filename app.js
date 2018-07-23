@@ -33,6 +33,7 @@ function checkForMotion() {
   console.log('seconds are:', ELAPSED_SECS);
   if (ELAPSED_SECS < TIMEOUT) {
     lastMotion = Date.now();
+    currTime = Date.now();
     return 'MOTION';
   } else {
     return 'crickets';
