@@ -72,7 +72,7 @@ name: 'Home',
   mounted() {
     setInterval(function () {
       this.loadData();
-    }.bind(this), 1000);
+    }.bind(this), 4000);
  },
 };
 </script>

@@ -50,10 +50,8 @@ app.post('/motion', function(req, res) {
   } else {
     currTime = Date.now();
     res.send(checkForMotion());
-    // console.log('func result', checkForMotion())
   }
 
-// console.log('math', ((currTime - lastMotion) / 1000 < TIMEOUT))
 });
 
 // catch 404 and forward to error handler
