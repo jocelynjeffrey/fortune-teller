@@ -55,14 +55,14 @@ module.exports = {
         function() { // eslint-disable-line
           this.showFortune = false;
         }.bind(this),
-        1400,
+        1000,
       );
     },
   },
   mounted() {
     setInterval(function () {
       this.loadData();
-    }.bind(this), 2000);
+    }.bind(this), 1000);
  },
 };
 </script>

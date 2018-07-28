@@ -25,45 +25,15 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-const throttle = (func, limit) => {
-  let lastFunc
-  let lastRan
-  return function() {
-    const context = this
-    const args = arguments
-    if (!lastRan) {
-      func.apply(context, args)
-      lastRan = Date.now()
-    } else {
-      clearTimeout(lastFunc)
-      lastFunc = setTimeout(function() {
-        if ((Date.now() - lastRan) >= limit) {
-          func.apply(context, args)
-          lastRan = Date.now()
-        }
-      }, limit - (Date.now() - lastRan))
-    }
-  }
-}
-
-// throttleBtn.addEventListener('click', throttle(function() {
-//   return console.log('Hey! It is', new Date().toUTCString());
-// }, 1000));
 
 function checkForMotion() {
-  throttle(function() {
+  var ELAPSED_SECS = (currTime - lastMotion);
+  if (ELAPSED_SECS < TIMEOUT) {
+    //lastMotion = Date.now();
     return 'MOTION';
-  }, 1000);
-// should throttle
-
-
-  // var ELAPSED_SECS = (currTime - lastMotion);
-  // if (ELAPSED_SECS < TIMEOUT) {
-  //   lastMotion = Date.now();
-  //   return 'MOTION';
-  // } else {
-  //   return 'detecting...';
-  // }
+  } else {
+    return 'detecting...';
+  }
 }
 
 app.post('/motion', function(req, res) {
@@ -75,7 +45,6 @@ app.post('/motion', function(req, res) {
   } else {
     currTime = Date.now();
     res.send(checkForMotion());
-    console.log('in else!');
   }
 });
 
