@@ -1,10 +1,14 @@
 <template>
   <div class="wrapper">
     <h1>{{ main }}</h1>
-    <div class="crystal-ball">
+    <div>
       <img src="./src/assets/imgs/crystal_ball.png">
       <transition name="fade">
-        <h2 class="fortune-text" v-if="showFortune">{{ getFortune() }}</h2>
+        <fortune-text
+          class="fortune-text"
+          v-if="showFortune"
+          v-bind:fortuneNumber="this.fortuneVariable">
+        </fortune-text>
       </transition>
     </div>
     <h2>{{ question }}</h2>
@@ -13,14 +17,19 @@
 
 <script>
 const axios = require('axios');
+var FortuneText = require('./FortuneText.vue');
 
 module.exports = {
-name: 'Home',
+  name: 'Home',
+  components: {
+    fortuneText: FortuneText
+  },
   data() {
     return {
       main: 'Ask Zandar',
       question: 'What will your fortune reveal?',
       showFortune: false,
+      fortuneVariable: null,
     };
   },
   methods: {
@@ -36,26 +45,8 @@ name: 'Home',
       })
       .catch(error => console.log('oh no, error from server:', error));
     },
-    getFortune() {
-      switch (true) {
-        case this.fortuneVariable <= 15:
-          return 'yes!';
-        case this.fortuneVariable <= 30:
-          return 'definitely';
-        case this.fortuneVariable <= 45:
-          return 'nooooooope.';
-        case this.fortuneVariable <= 60:
-          return 'absolutely!';
-        case this.fortuneVariable <= 75:
-          return 'looks good!';
-        case this.fortuneVariable <= 90:
-          return 'I think not.';
-        default:
-          return 'hmmm...maybe?';
-      }
-    },
     setFortuneValue() {
-      this.fortuneVariable = (Math.random() * 100).toFixed(2);
+      this.fortuneVariable = Math.round((Math.random() * 100));
       this.showFortune = true;
     },
     reset() {
@@ -63,7 +54,7 @@ name: 'Home',
         function() { // eslint-disable-line
           this.showFortune = false;
         }.bind(this),
-        2500,
+        1000,
       );
     },
   },
@@ -90,30 +81,19 @@ name: 'Home',
     height: 100%;
   }
 
-  .crystal-ball {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    button {
-      position: absolute;
-      top: 50%;
-    }
-
-    .fortune-text {
-      position: absolute;
-      color: #FC0F71;
-      text-shadow: -1px 0 #B00049, 0 1px #B00049, 1px 0 #B00049, 0 -1px #B00049;
-      top: 45%;
-      font-size: 6rem;
-      margin: 0;
-    }
-  }
-
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to {
+// transitions
+  .fade-enter,
+  .fade-leave-to {
     opacity: 0;
+    transform: rotateX(50deg);
+  }
+  .fade-enter-to,
+  .fade-leave {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s, transform 1200ms ease-out;
   }
 </style>
