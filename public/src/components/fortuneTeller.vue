@@ -10,6 +10,7 @@
           v-bind:fortuneNumber="this.fortuneVariable">
         </fortune-text>
       </transition>
+      <button v-if="!showFortune" @click="setFortuneValue">click me</button>
     </div>
     <h2>{{ question }}</h2>
   </div>
@@ -79,6 +80,11 @@ module.exports = {
     width: 80%;
     max-width: 500px;
     height: 100%;
+  }
+
+  button {
+    position: absolute;
+    top: 50%;
   }
 
 // transitions
