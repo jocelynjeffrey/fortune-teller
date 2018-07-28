@@ -55,7 +55,7 @@ module.exports = {
         function() { // eslint-disable-line
           this.showFortune = false;
         }.bind(this),
-        1000,
+        1400,
       );
     },
   },
