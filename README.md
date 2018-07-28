@@ -1,6 +1,6 @@
 # fortune-teller
 
-> A Spooky Vue project
+> A Spooky Vue inside Express project
 
 ## Build Setup
 
