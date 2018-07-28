@@ -10,7 +10,7 @@
           v-bind:fortuneNumber="this.fortuneVariable">
         </fortune-text>
       </transition>
-      <button v-if="!showFortune" @click="setFortuneValue">click me</button>
+      <!-- <button v-if="!showFortune" @click="setFortuneValue">click me</button> -->
     </div>
     <h2>{{ question }}</h2>
   </div>
@@ -18,7 +18,7 @@
 
 <script>
 const axios = require('axios');
-var FortuneText = require('./FortuneText.vue');
+var FortuneText = require('./fortuneText.vue');
 
 module.exports = {
   name: 'Home',
@@ -82,10 +82,10 @@ module.exports = {
     height: 100%;
   }
 
-  button {
-    position: absolute;
-    top: 50%;
-  }
+  // button {
+  //   position: absolute;
+  //   top: 50%;
+  // }
 
 // transitions
   .fade-enter,
