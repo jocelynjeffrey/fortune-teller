@@ -44,6 +44,7 @@ app.post('/motion', function(req, res) {
   } else {
     currTime = Date.now();
     res.send(checkForMotion());
+    console.log('in else!');
   }
 });
 
