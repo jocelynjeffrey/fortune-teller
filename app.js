@@ -29,7 +29,6 @@ app.get('/', function(req, res) {
 function checkForMotion() {
   var ELAPSED_SECS = (currTime - lastMotion);
   if (ELAPSED_SECS < TIMEOUT) {
-    //lastMotion = Date.now();
     return 'MOTION';
   } else {
     return 'detecting...';
