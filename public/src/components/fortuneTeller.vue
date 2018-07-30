@@ -35,6 +35,8 @@ module.exports = {
   },
   methods: {
     loadData() {
+      // For tasks shared between server and client
+      // wrap the platform-specific implementations with axios
       axios.post('http://localhost:3000/motion')
       .then(res => {
         if(res.data === 'MOTION') {
@@ -52,13 +54,18 @@ module.exports = {
     },
     reset() {
       setTimeout(
-        function() { // eslint-disable-line
+        function() {
           this.showFortune = false;
         }.bind(this),
         1000,
       );
     },
   },
+  // will ONLY be executed on the client
+  // side effects (like setInterval) need to live in mounted()
+  // because destroy hooks are not called in SSR
+  // ...which means they will live forever
+  // which would be bad
   mounted() {
     setInterval(function () {
       this.loadData();
