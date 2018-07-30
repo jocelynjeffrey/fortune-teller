@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var TIMEOUT = 1000;
 var lastMotion = 0;
 var currTime = 0;
+let motionTest = false;
 
 var app = express();
 
@@ -28,7 +29,8 @@ app.get('/', function(req, res) {
 
 function checkForMotion() {
   var ELAPSED_SECS = (currTime - lastMotion);
-  if (ELAPSED_SECS < TIMEOUT) {
+  // if (ELAPSED_SECS < TIMEOUT) {
+  if (motionTest) {
     return 'MOTION';
   } else {
     return 'detecting...';
@@ -38,12 +40,14 @@ function checkForMotion() {
 app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   if (msg === 'PI') {
+    motionTest = true;
     lastMotion = Date.now();
     currTime = Date.now();
     res.send('MOTION');
   } else {
     currTime = Date.now();
     res.send(checkForMotion());
+    motionTest = false;
   }
 });
 
