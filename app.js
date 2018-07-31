@@ -5,9 +5,9 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 // var isMotion = false;
-var TIMEOUT = 1000;
-var lastMotion = 0;
-var currTime = 0;
+// var TIMEOUT = 1000;
+// var lastMotion = 0;
+// var currTime = 0;
 let motionTest = false;
 
 var app = express();
@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
 
 
 function checkForMotion() {
-  var ELAPSED_SECS = (currTime - lastMotion);
+  // var ELAPSED_SECS = (currTime - lastMotion);
   // if (ELAPSED_SECS < TIMEOUT) {
   if (motionTest) {
     return 'MOTION';
@@ -41,11 +41,11 @@ app.post('/motion', function(req, res) {
   var msg = req.body.msg;
   if (msg === 'PI') {
     motionTest = true;
-    lastMotion = Date.now();
-    currTime = Date.now();
+    // lastMotion = Date.now();
+    // currTime = Date.now();
     res.send('MOTION');
   } else {
-    currTime = Date.now();
+    // currTime = Date.now();
     res.send(checkForMotion());
     motionTest = false;
   }
