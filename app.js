@@ -1,16 +1,12 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
 
-// var isMotion = false;
-// var TIMEOUT = 1000;
-// var lastMotion = 0;
-// var currTime = 0;
-let motionTest = false;
+let isMotion = false;
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,42 +18,37 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   res.render('index', { title: 'Fortune Teller' });
 });
 
 
 function checkForMotion() {
-  // var ELAPSED_SECS = (currTime - lastMotion);
-  // if (ELAPSED_SECS < TIMEOUT) {
-  if (motionTest) {
+  if (isMotion) {
     return 'MOTION';
   } else {
     return 'detecting...';
   }
 }
 
-app.post('/motion', function(req, res) {
+app.post('/motion', (req, res) => {
   var msg = req.body.msg;
   if (msg === 'PI') {
-    motionTest = true;
-    // lastMotion = Date.now();
-    // currTime = Date.now();
+    isMotion = true;
     res.send('MOTION');
   } else {
-    // currTime = Date.now();
     res.send(checkForMotion());
-    motionTest = false;
+    isMotion = false;
   }
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
