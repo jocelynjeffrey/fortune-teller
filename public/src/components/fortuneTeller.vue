@@ -37,9 +37,9 @@ module.exports = {
     loadData() {
       // For tasks shared between server and client
       // wrap the platform-specific implementations with axios
-      axios.post('/motion')
+      axios.get('/motion')
       .then(res => {
-        if(res.data === 'MOTION') {
+        if(res.data === 'MOTION') { // check the syntax here, maybe no .data if there's a bug
           this.setFortuneValue();
           this.reset();
         } else {
