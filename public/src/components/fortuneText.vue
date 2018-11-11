@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  module.exports = { // required instead of export default
+  module.exports = {
     name: 'FortuneText',
     props: {
       fortuneNumber: Number

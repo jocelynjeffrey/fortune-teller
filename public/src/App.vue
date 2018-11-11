@@ -49,6 +49,12 @@ h2 {
   font-style: italic;
 }
 
+img {
+  width: 80%;
+  max-width: 500px;
+  height: 100%;
+}
+
 button {
   background: navy;
   border: none;
@@ -56,6 +62,8 @@ button {
   min-width: 8rem;
   padding: 1rem;
   color: yellow;
+  position: absolute;
+  top: 50%;
 
   &:hover {
     background: #103f6b;

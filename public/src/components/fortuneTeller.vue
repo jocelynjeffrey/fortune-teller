@@ -35,8 +35,6 @@ module.exports = {
   },
   methods: {
     loadData() {
-      // For tasks shared between server and client
-      // wrap the platform-specific implementations with axios
       axios.get('/fortune')
       .then(res => {
         if (res.data === 'MOTION') { this.setFortuneValue() }
@@ -74,17 +72,6 @@ module.exports = {
     justify-content: space-between;
     padding: 2rem;
   }
-
-  img {
-    width: 80%;
-    max-width: 500px;
-    height: 100%;
-  }
-
-  // button {
-  //   position: absolute;
-  //   top: 50%;
-  // }
 
 // transitions
   .fade-enter,
