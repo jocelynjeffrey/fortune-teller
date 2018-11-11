@@ -25,6 +25,10 @@ app.post('/motion', (req, res) => {
   msg === 1 ? res.send('MOTION') : res.send('...waiting for motion');
 });
 
+app.get('/motion', (req, res) => {
+  res.send('hi')
+});
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
