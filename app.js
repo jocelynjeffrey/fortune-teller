@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 let isMotion = false;
 
-app.post('/', (req) => {
+app.post('/motion', (req) => {
   // isMotion = Boolean(req.body.msg);
   res.send('got a POST')
 });

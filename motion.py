@@ -17,7 +17,7 @@ GPIO.setup(pir, GPIO.IN)
 import requests
 
 #set api endpoint
-url = "http://localhost:3000/"
+url = "http://localhost:3000/motion"
 
 print ("Waiting for sensor to settle")
 time.sleep(2)                                     #Waiting 2 seconds for the sensor to initiate
