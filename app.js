@@ -19,26 +19,9 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-let isMotion = false;
-
-function checkForMotion() {
-  if (isMotion) {
-    return 'MOTION';
-  } else {
-    return 'detecting...';
-  }
-}
-
 app.post('/motion', (req, res) => {
   var msg = req.body.msg;
-  console.log('msg is', msg)
-  if (msg) {
-    isMotion = true;
-    res.send('MOTION');
-  } else {
-    res.send(checkForMotion());
-    isMotion = false;
-  }
+  msg ? res.send('MOTION') : res.send('...waiting for motion');
 });
 
 // catch 404 and forward to error handler
