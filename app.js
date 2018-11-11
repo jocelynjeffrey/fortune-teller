@@ -21,14 +21,23 @@ app.get('/', (req, res) => {
 
 let isMotion = false;
 
-app.get('/motion', (req, res) => {
-  const msg = isMotion ? 'MOTION' : 'detecting...';
-  res.send(msg);
-});
+function checkForMotion() {
+  if (isMotion) {
+    return 'MOTION';
+  } else {
+    return 'detecting...';
+  }
+}
 
-app.post('/motion', (req) => {
-  isMotion = Boolean(req.body.msg);
-});
+  app.post('/motion', (req, res) => {
+  var msg = req.body.msg;
+  if (msg === 'PI') {
+    isMotion = true;
+    res.send('MOTION');
+  } else {
+    res.send(checkForMotion());
+    isMotion = false;
+}
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
