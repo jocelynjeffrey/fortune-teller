@@ -23,12 +23,12 @@ print ("Waiting for sensor to settle")
 time.sleep(2)                                     #Waiting 2 seconds for the sensor to initiate
 print ("Detecting...")
 while True:
-    if GPIO.input(pir):                            #Check whether pir is HIGH
+   if GPIO.input(pir):                            #Check whether pir is HIGH
       print ("Motion Detected!")
+      requests.post(url, json={'msg': 0})
+      time.sleep(2.5)                               #D1- Delay to avoid multiple detection
+   else:
+      print ("waiting for motion")
       requests.post(url, json={'msg': 1})
-      print ("after post")
       time.sleep(2.5)
-    else:
-      print ("No motion.")
-      requests.post(url, json={'msg': 0})                       #D1- Delay to avoid multiple detection
-    time.sleep(0.1)                                #While loop delay should be less than detection(hardware) delay
+   time.sleep(0.1)                                #While loop delay should be less than detection(hard$
