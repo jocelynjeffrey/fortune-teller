@@ -31,7 +31,7 @@ function checkForMotion() {
 
 app.post('/motion', (req, res) => {
   var msg = req.body.msg;
-  if (msg === 'PI') {
+  if (msg) {
     isMotion = true;
     res.send('MOTION');
   } else {

@@ -39,7 +39,7 @@ module.exports = {
       // wrap the platform-specific implementations with axios
       axios.post('/motion')
       .then(res => {
-        if(res.data) {
+        if(res.data === 'MOTION') {
           this.setFortuneValue();
           this.reset();
         } else {
