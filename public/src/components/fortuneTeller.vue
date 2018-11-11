@@ -64,7 +64,7 @@ module.exports = {
   mounted() {
     setInterval(function () {
       this.loadData();
-    }.bind(this), 1000);
+    }.bind(this), 2000);
  },
 };
 </script>
