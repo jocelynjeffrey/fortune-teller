@@ -21,8 +21,8 @@ app.get('/', (req, res) => {
 
 app.post('/motion', (req, res) => {
   var msg = req.body.msg;
-  console.log('msg is', msg == 1)
-  msg == 1 ? res.send('MOTION') : res.send('...waiting for motion');
+  console.log('msg is', msg === 1)
+  msg === 1 ? res.send('MOTION') : res.send('...waiting for motion');
 });
 
 // catch 404 and forward to error handler
