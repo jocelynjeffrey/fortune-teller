@@ -3,9 +3,6 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-
-let isMotion = false;
-
 const app = express();
 
 // view engine setup
@@ -22,24 +19,15 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Fortune Teller' });
 });
 
+let isMotion = false;
 
-function checkForMotion() {
-  if (isMotion) {
-    return 'MOTION';
-  } else {
-    return 'detecting...';
-  }
-}
+app.get('/motion', (req, res) => {
+  const msg = isMotion ? 'MOTION' : 'detecting...';
+  res.send(msg);
+});
 
-app.post('/motion', (req, res) => {
-  var msg = req.body.msg;
-  if (msg === 'PI') {
-    isMotion = true;
-    res.send('MOTION');
-  } else {
-    res.send(checkForMotion());
-    isMotion = false;
-  }
+app.post('/motion', (req) => {
+  isMotion = Boolean(req.body.msg);
 });
 
 // catch 404 and forward to error handler
