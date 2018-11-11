@@ -23,7 +23,7 @@ let isMotion = false;
 
 app.post('/motion', (req, res) => {
   isMotion = Boolean(req.body.msg);
-  res.send('got a POST')
+  res.end();
 });
 
 app.get('/fortune', (req, res) => {
