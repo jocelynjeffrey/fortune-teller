@@ -60,7 +60,6 @@ module.exports = {
   // which would be bad
   mounted() {
     setInterval(() => {
-      console.log('about to load data');
       this.loadData();
     }, 2000);
  },
