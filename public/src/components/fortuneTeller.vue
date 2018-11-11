@@ -46,8 +46,7 @@ module.exports = {
       .catch(error => console.log('oh no, error from server:', error));
     },
     setFortuneValue() {
-      if(this.showFortune === false) {
-        console.log('setting val bc !this.showFortune says false:', !this.showFortune)
+      if(!this.showFortune) {
         this.fortuneVariable = Math.round((Math.random() * 100));
         this.showFortune = true;
         this.resetValue();
