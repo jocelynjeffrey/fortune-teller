@@ -27,7 +27,6 @@ app.post('/motion', (req, res) => {
 });
 
 app.get('/fortune', (req, res) => {
-  // res.send('got a motion GET')
   const msg = isMotion ? 'MOTION' : 'detecting...';
   res.send(msg);
 });
