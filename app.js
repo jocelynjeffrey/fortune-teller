@@ -21,15 +21,15 @@ app.get('/', (req, res) => {
 
 let isMotion = false;
 
-app.post('/motion', (req, res) => {
-  // isMotion = Boolean(req.body.msg);
-  res.send('got a POST')
-});
-
 app.get('/motion', (req, res) => {
   res.send('got a motion GET')
   // const msg = isMotion ? 'MOTION' : 'detecting...';
   // res.send(msg);
+});
+
+app.post('/motion', (req, res) => {
+  // isMotion = Boolean(req.body.msg);
+  res.send('got a POST')
 });
 
 // catch 404 and forward to error handler
