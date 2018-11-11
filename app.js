@@ -19,7 +19,12 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.post('/motion', (req, res) => {
+// app.get('/motion', (req, res) => {
+//   const msg = isMotion ? 'MOTION' : 'detecting...';
+//   res.send(msg);
+// });
+
+app.get('/motion', (req, res) => {
   var msg = req.body.msg;
   console.log('msg is', msg === 1)
   msg === 1 ? res.send('MOTION') : res.send('...waiting for motion');
