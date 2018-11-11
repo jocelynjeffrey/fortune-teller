@@ -19,14 +19,16 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.post('/motion', (req, res) => {
-  var msg = req.body.msg;
+app.post('/motion', (req, res, next) => {
+  var message = req.body.msg;
   console.log('msg is', msg === 1)
-  msg === 1 ? res.send('MOTION') : res.send('...waiting for motion');
+  next(message);
 });
 
 app.get('/motion', (req, res) => {
-  res.send('hi')
+  console.log('get res', res)
+  console.log('get req', req)
+  res === 1 ? res.send('MOTION') : res.send('...waiting for motion');
 });
 
 // catch 404 and forward to error handler
