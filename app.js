@@ -30,10 +30,10 @@ app.get('/fortune', (req, res) => {
   isMotion ? res.send('MOTION') : res.send('detecting...');
 });
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  next(createError(404));
-});
+// // catch 404 and forward to error handler
+// app.use((req, res, next) => {
+//   next(createError(404));
+// });
 
 // error handler
 app.use((err, req, res) => {
