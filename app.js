@@ -29,7 +29,7 @@ function checkForMotion() {
   }
 }
 
-  app.post('/motion', (req, res) => {
+app.post('/motion', (req, res) => {
   var msg = req.body.msg;
   if (msg === 'PI') {
     isMotion = true;
@@ -37,7 +37,8 @@ function checkForMotion() {
   } else {
     res.send(checkForMotion());
     isMotion = false;
-}
+  }
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
