@@ -23,11 +23,9 @@ let isMotion = false;
 
 app.post('/motion', (req, res) => {
   isMotion = Boolean(req.body.msg);
-  res.send('got a POST')
 });
 
 app.get('/fortune', (req, res) => {
-  // res.send('got a motion GET')
   const msg = isMotion ? 'MOTION' : 'detecting...';
   res.send(msg);
 });

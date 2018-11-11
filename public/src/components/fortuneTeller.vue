@@ -39,10 +39,9 @@ module.exports = {
       // wrap the platform-specific implementations with axios
       axios.get('/fortune')
       .then(res => {
-        console.log('from vue res', res);
         if(res.data === 'MOTION') {
           this.setFortuneValue();
-          this.reset();
+          // this.reset();
         } else {
           console.log('no motion')
         }
@@ -52,6 +51,7 @@ module.exports = {
     setFortuneValue() {
       this.fortuneVariable = Math.round((Math.random() * 100));
       this.showFortune = true;
+      this.reset();
     },
     reset() {
       setTimeout(
