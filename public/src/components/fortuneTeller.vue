@@ -49,10 +49,9 @@ module.exports = {
       if(!this.showFortune) {
         this.showFortune = true;
         this.fortuneVariable = Math.round((Math.random() * 100));
-        this.showFortune = false;
-        // setTimeout(() => {
-        //   this.showFortune = false;
-        // }, 1000);
+        setTimeout(() => {
+          this.showFortune = false;
+        }, 1000);
       }
     },
   },
@@ -63,6 +62,7 @@ module.exports = {
   // which would be bad
   mounted() {
     setInterval(() => {
+      console.log('about to load data');
       this.loadData();
     }, 2000);
  },
