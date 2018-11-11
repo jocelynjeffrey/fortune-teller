@@ -39,6 +39,7 @@ module.exports = {
       // wrap the platform-specific implementations with axios
       axios.get('/motion')
       .then(res => {
+        console.log('from vue res', res);
         if(res.data === 'MOTION') {
           this.setFortuneValue();
           this.reset();
