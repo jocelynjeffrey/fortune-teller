@@ -25,10 +25,10 @@ print ("Detecting...")
 while True:
    if GPIO.input(pir):                            #Check whether pir is HIGH
       print ("Motion Detected!")
-      requests.post(url, json={'msg': true})
+      requests.post(url, json={'msg': 1})
       time.sleep(2.5)                               #D1- Delay to avoid multiple detection
    else:
       print ("waiting for motion")
-      requests.post(url, json={'msg': false})
+      requests.post(url, json={'msg': 0})
       time.sleep(2.5)
    time.sleep(0.1)                                #While loop delay should be less than detection(hard$
