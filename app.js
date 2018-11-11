@@ -27,8 +27,7 @@ app.post('/motion', (req, res) => {
 });
 
 app.get('/fortune', (req, res) => {
-  const msg = isMotion ? 'MOTION' : 'detecting...';
-  res.send(msg);
+  isMotion ? res.send('MOTION') : res.send('detecting...');
 });
 
 // catch 404 and forward to error handler
