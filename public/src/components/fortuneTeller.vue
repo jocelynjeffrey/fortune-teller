@@ -46,9 +46,15 @@ module.exports = {
       .catch(error => console.log('oh no, error from server:', error));
     },
     setFortuneValue() {
-      console.log('inside setFortuneValue')
-      this.fortuneVariable = Math.round((Math.random() * 100));
-      this.showFortune = true;
+      if(this.showFortune) {
+        return
+      } else {
+        this.fortuneVariable = Math.round((Math.random() * 100));
+        this.showFortune = true;
+        this.resetValue();
+      }
+    },
+    resetValue() {
       setTimeout(
         function() {
           this.showFortune = false;
