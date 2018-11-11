@@ -47,18 +47,12 @@ module.exports = {
     },
     setFortuneValue() {
       if(!this.showFortune) {
-        this.fortuneVariable = Math.round((Math.random() * 100));
         this.showFortune = true;
-        this.resetValue();
-      }
-    },
-    resetValue() {
-      setTimeout(
-        function() {
+        this.fortuneVariable = Math.round((Math.random() * 100));
+        setTimeout(() => {
           this.showFortune = false;
-        }.bind(this),
-        1000,
-      );
+        }, 1000);
+      }
     },
   },
   // will ONLY be executed on the client
@@ -67,9 +61,9 @@ module.exports = {
   // ...which means they will live forever
   // which would be bad
   mounted() {
-    setInterval(function () {
+    setInterval(() => {
       this.loadData();
-    }.bind(this), 2000);
+    }, 2000);
  },
 };
 </script>
