@@ -49,9 +49,10 @@ module.exports = {
       if(!this.showFortune) {
         this.showFortune = true;
         this.fortuneVariable = Math.round((Math.random() * 100));
-        setTimeout(() => {
-          this.showFortune = false;
-        }, 1000);
+        this.showFortune = false;
+        // setTimeout(() => {
+        //   this.showFortune = false;
+        // }, 1000);
       }
     },
   },
