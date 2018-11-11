@@ -37,13 +37,14 @@ module.exports = {
     loadData() {
       // For tasks shared between server and client
       // wrap the platform-specific implementations with axios
-      axios.post('/motion')
+      axios.get('/fortune')
       .then(res => {
+        console.log('from vue res', res);
         if(res.data === 'MOTION') {
           this.setFortuneValue();
           this.reset();
         } else {
-          console.log(res.data)
+          console.log('no motion')
         }
       })
       .catch(error => console.log('oh no, error from server:', error));

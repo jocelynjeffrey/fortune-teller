@@ -21,23 +21,15 @@ app.get('/', (req, res) => {
 
 let isMotion = false;
 
-function checkForMotion() {
-  if (isMotion) {
-    return 'MOTION';
-  } else {
-    return 'detecting...';
-  }
-}
-
 app.post('/motion', (req, res) => {
-  var msg = req.body.msg;
-  if (msg === 'PI') {
-    isMotion = true;
-    res.send('MOTION');
-  } else {
-    res.send(checkForMotion());
-    isMotion = false;
-  }
+  // isMotion = Boolean(req.body.msg);
+  res.send('got a POST')
+});
+
+app.get('/fortune', (req, res) => {
+  res.send('got a motion GET')
+  // const msg = isMotion ? 'MOTION' : 'detecting...';
+  // res.send(msg);
 });
 
 // catch 404 and forward to error handler
@@ -46,7 +38,7 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
