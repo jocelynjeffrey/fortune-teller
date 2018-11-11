@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 app.post('/motion', (req, res) => {
   var msg = req.body.msg;
-  console.log(msg === true)
+  console.log('msg is', msg)
   msg ? res.send('MOTION') : res.send('...waiting for motion');
 });
 
