@@ -39,11 +39,9 @@ module.exports = {
       // wrap the platform-specific implementations with axios
       axios.get('/fortune')
       .then(res => {
-        res.data === 'MOTION'
-          ? this.setFortuneValue()
-          : console.log('no motion')
+        if (res.data === 'MOTION') { this.setFortuneValue() }
       })
-      .catch(error => console.log('oh no, error from server:', error));
+      .catch(error => console.log('error from server'));
     },
     setFortuneValue() {
       if(!this.showFortune) {
