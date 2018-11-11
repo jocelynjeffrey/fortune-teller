@@ -19,16 +19,15 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Fortune Teller' });
 });
 
-app.post('/motion', (req, res, next) => {
-  var message = req.body.msg;
-  console.log('msg is', msg === 1)
-  next(message);
+let isMotion = false;
+
+app.post('/', (req) => {
+  isMotion = Boolean(req.body.msg);
 });
 
 app.get('/motion', (req, res) => {
-  console.log('get res', res)
-  console.log('get req', req)
-  res === 1 ? res.send('MOTION') : res.send('...waiting for motion');
+  const msg = isMotion ? 'MOTION' : 'detecting...';
+  res.send(msg);
 });
 
 // catch 404 and forward to error handler
@@ -37,7 +36,7 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
